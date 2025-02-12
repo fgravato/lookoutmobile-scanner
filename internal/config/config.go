@@ -56,7 +56,7 @@ func Load() (*Config, error) {
 	// Load API configuration
 	cfg.API = APIConfig{
 		BaseURL:        getEnv("API_BASE_URL", "https://api.lookout.com"),
-		ApplicationKey: requireEnv("APPLICATION_KEY"),
+		ApplicationKey: getEnv("APPLICATION_KEY", ""), // Make it optional
 		Timeout:        getDurationEnv("API_TIMEOUT", 30*time.Second),
 		MaxRetries:     getIntEnv("API_MAX_RETRIES", 3),
 		RetryDelay:     getDurationEnv("API_RETRY_DELAY", 5*time.Second),
@@ -88,8 +88,9 @@ func Load() (*Config, error) {
 // validate performs configuration validation
 func (c *Config) validate() error {
 	// Validate API configuration
-	if c.API.ApplicationKey == "" {
-		return fmt.Errorf("APPLICATION_KEY is required")
+	isLocalMode := len(os.Args) > 1 && os.Args[1] == "--local"
+	if !isLocalMode && c.API.ApplicationKey == "" {
+		return fmt.Errorf("APPLICATION_KEY is required when not in local mode")
 	}
 	if c.API.Timeout < 1*time.Second {
 		return fmt.Errorf("API_TIMEOUT must be at least 1 second")

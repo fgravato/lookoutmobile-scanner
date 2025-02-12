@@ -28,7 +28,12 @@ go get github.com/tidwall/buntdb
 
 ## Configuration
 
-1. Create `.env` file in project root:
+1. Ensure the `data` directory exists in the project root (it will store the BuntDB database):
+```bash
+mkdir -p data
+```
+
+2. Create `.env` file in project root:
 ```
 APPLICATION_KEY=your_lookout_application_key_here
 ```
