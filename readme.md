@@ -19,7 +19,7 @@ A Go application to scan and analyze devices using Lookout's Mobile Risk API.
 ## Installation
 
 ```bash
-git clone [repository-url]
+git clone https://github.com/fgravato/lookoutmobile-scanner
 cd lookoutmobile-scanner
 go mod init lookoutmobile-scanner
 go get github.com/joho/godotenv
@@ -58,6 +58,3 @@ Data is stored in `devices.db` for future access.
 ## Rate Limiting
 
 The application includes automatic retry with exponential backoff for rate-limited requests.
-
-
-

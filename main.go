@@ -10,11 +10,11 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/fgravato/lookout-appgo/internal/analyzer"
-	"github.com/fgravato/lookout-appgo/internal/api"
-	"github.com/fgravato/lookout-appgo/internal/config"
-	"github.com/fgravato/lookout-appgo/internal/database"
-	"github.com/fgravato/lookout-appgo/internal/device"
+	"github.com/fgravato/lookoutmobile-scanner/internal/analyzer"
+	"github.com/fgravato/lookoutmobile-scanner/internal/api"
+	"github.com/fgravato/lookoutmobile-scanner/internal/config"
+	"github.com/fgravato/lookoutmobile-scanner/internal/database"
+	"github.com/fgravato/lookoutmobile-scanner/internal/device"
 )
 
 func main() {
